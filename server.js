@@ -18,8 +18,8 @@ const db = mysql.createConnection(
   console.log(`Connected to the emptracker_db database.`)
 );
 
-function getDB(DB){
-    db.query(`SELECT * FROM ${DB}`, function (err, results) {
+function getDB(table){
+    db.query(`SELECT * FROM ${table}`, function (err, results) {
         console.table(results);
       });
 }
@@ -44,7 +44,7 @@ async function HomeMenu() {
     .then((result) => {
       switch (result.mainmenu) {
         case "View Departments":
-            console.table(department);
+            getDB("department");
 
       }
     });
